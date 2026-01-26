@@ -1,0 +1,80 @@
+name: Validate Files
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-yaml:
+    name: Validate YAML files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Validate YAML files
+        run: yamllint -d relaxed .
+
+  validate-json:
+    name: Validate JSON files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate plugin.json
+        run: |
+          echo "Validating plugin.json..."
+          python3 -m json.tool .claude-plugin/plugin.json > /dev/null
+          echo "plugin.json is valid"
+
+      - name: Validate marketplace.json
+        run: |
+          echo "Validating marketplace.json..."
+          python3 -m json.tool .claude-plugin/marketplace.json > /dev/null
+          echo "marketplace.json is valid"
+
+  validate-markdown:
+    name: Validate Markdown files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Markdown files
+        run: markdownlint '**/*.md' --ignore node_modules
+
+  validate-links:
+    name: Validate Markdown links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Check links in Markdown files
+        run: |
+          find . -name '*.md' -not -path './node_modules/*' | while read file; do
+            echo "Checking links in $file..."
+            markdown-link-check "$file" --config .markdown-link-check.json --quiet
+          done
