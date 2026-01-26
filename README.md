@@ -15,7 +15,6 @@ This project brings together custom skills for Claude Code and OpenCode, enablin
 
 The skills follow the open [Agent Skills](https://agentskills.io) standard, compatible with multiple AI tools.
 
-
 ## Available skills
 
 WIP
