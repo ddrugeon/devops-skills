@@ -1,0 +1,8 @@
+{
+  "name": "devops-skills",
+  "description": "Set of DevOps skills for Claude Code.",
+  "version": "0.1.0",
+  "author": {
+    "name": "David Drugeon-Hamon"
+  }
+}
