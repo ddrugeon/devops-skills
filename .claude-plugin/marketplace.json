@@ -1,13 +1,26 @@
 {
-  "name": "ddrugeon",
+  "name": "devops-skills",
   "owner": {
     "name": "David Drugeon-Hamon"
+  },
+  "metadata": {
+    "description": "Skills dedicated to devops",
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "devops-skills",
-      "source": "./devops-skills-plugin",
-      "description": "DevOps skills for Claude Code."
+      "source": "./",
+      "description": "Skills dedicated to devops tools (audit or generate configuration files)",
+      "version": "0.1.0",
+      "author": {
+        "name": "ddrugeon"
+      },
+      "homepage": "https://github.com/ddrugeon/devops-skills",
+      "repository": "https://github.com/ddrugeon/devops-skills",
+      "license": "MIT",
+      "keywords": ["claude-skill", "claude-code", "devops"],
+      "tags": ["devops"]
     }
   ]
 }
