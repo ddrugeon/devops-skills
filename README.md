@@ -17,7 +17,66 @@ The skills follow the open [Agent Skills](https://agentskills.io) standard, comp
 
 ## Available skills
 
-WIP
+| Skill | Description | Version |
+| ----- | ----------- | ------- |
+| [ansible-auditor](skills/ansible-auditor/SKILL.md) | Comprehensive Ansible role auditor based on Red Hat Automation Good Practices. Analyzes roles across 59 rules covering security, structure, modules, tasks, genericity, reusability, and Molecule tests. | 0.1.0 |
+
+## Prerequisites
+
+Some skills require external tools to be installed. Below are the installation instructions for each skill's dependencies.
+
+### ansible-auditor
+
+This skill uses three linting tools for automated analysis.
+
+#### With mise (Recommended)
+
+[mise](https://mise.jdx.dev/) is a polyglot tool version manager that simplifies tool installation and version management.
+
+```bash
+# Install mise (if not already installed)
+curl https://mise.run | sh
+
+# Install the tools
+mise use -g pipx:yamllint
+mise use -g pipx:ansible-lint
+mise use -g pipx:checkov
+```
+
+Or add to your project's `.mise.toml`:
+
+```toml
+[tools]
+"pipx:yamllint" = "latest"
+"pipx:ansible-lint" = "latest"
+"pipx:checkov" = "latest"
+```
+
+Then run:
+
+```bash
+mise install
+```
+
+#### With pip/pipx
+
+```bash
+# Install all tools with pip
+pip install yamllint ansible-lint checkov
+
+# Or with pipx (recommended for CLI tools)
+pipx install yamllint
+pipx install ansible-lint
+pipx install checkov
+```
+
+| Tool | Purpose | Documentation |
+| ---- | ------- | ------------- |
+| [yamllint](https://yamllint.readthedocs.io/) | YAML syntax validation | [Rules](https://yamllint.readthedocs.io/en/stable/rules.html) |
+| [ansible-lint](https://ansible.readthedocs.io/projects/lint/) | Ansible best practices | [Rules](https://ansible.readthedocs.io/projects/lint/rules/) |
+| [checkov](https://www.checkov.io/) | Security and compliance scanning | [Policies](https://www.checkov.io/5.Policy%20Index/ansible.html) |
+
+**Note**: If a tool is not installed, the skill will indicate it in the audit report and continue with the other available tools.
 
 ## Installation
 
