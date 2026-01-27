@@ -1,0 +1,22 @@
+---
+# BAD PRACTICES in vars
+
+# SEC1: Secrets in plain text
+mysql_root_password: "r00t_p@ssw0rd!"
+ssh_private_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  MIIEpAIBAAKCAQEA0Z3VS5JJcds3xfn/ygWyF8PbnGy0AHB7Ls...
+  -----END RSA PRIVATE KEY-----
+
+# R3: Internal variable without double underscore prefix
+internal_temp_value: "should be __internal_temp_value"
+
+# G4: Hardcoded paths
+log_directory: /var/log/myapp
+config_path: /etc/myapp/config.yml
+binary_path: /usr/local/bin/myapp
+
+# R3: Inconsistent naming
+MyVariable: "PascalCase"
+my_Variable: "mixedCase"
+MY_VARIABLE: "UPPERCASE"

@@ -1,0 +1,130 @@
+---
+# BAD PRACTICES: This file demonstrates what NOT to do
+
+# T1: Missing task name
+- debug:
+    msg: "Hello"
+
+# MOD1: Missing FQCN (should be ansible.builtin.debug)
+- name: Show message
+  debug:
+    msg: "test"
+
+# MOD3: Using shell instead of dedicated module
+- name: Install package with shell
+  shell: apt-get install -y nginx
+  become: yes
+
+# MOD3: Using command for file operations
+- name: Create directory with command
+  command: mkdir -p /opt/myapp
+
+# SEC1: Hardcoded password
+- name: Create database user
+  community.mysql.mysql_user:
+    name: admin
+    password: SuperSecret123!
+    priv: '*.*:ALL'
+
+# SEC2: Missing no_log for sensitive data
+- name: Set API token
+  set_fact:
+    api_token: "sk-1234567890abcdef"
+
+# T2: Not idempotent - always changes
+- name: Run setup script
+  shell: /opt/setup.sh
+
+# MOD6: Missing changed_when
+- name: Check service status
+  command: systemctl status nginx
+  register: nginx_status
+  ignore_errors: yes
+
+# T4: Using ignore_errors without justification
+- name: Dangerous operation
+  shell: rm -rf /tmp/*
+  ignore_errors: yes
+
+# G1: Hardcoded values instead of variables
+- name: Configure application
+  template:
+    src: app.conf.j2
+    dest: /etc/myapp/app.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# G4: Hardcoded absolute path
+- name: Copy binary
+  copy:
+    src: myapp
+    dest: /usr/local/bin/myapp
+    mode: 0755
+
+# SEC5: Command injection vulnerability
+- name: Process user input
+  shell: "echo {{ user_input }}"
+
+# T6: Template without ansible_managed
+- name: Deploy config without managed header
+  template:
+    src: unmanaged.conf.j2
+    dest: /etc/app/config.conf
+
+# MOD7: Using raw module unnecessarily
+- name: Install Python
+  raw: apt-get install -y python3
+
+# T7: Inefficient loop
+- name: Create users one by one
+  user:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - alice
+    - bob
+    - charlie
+
+# G2: Missing default filter
+- name: Show variable without default
+  debug:
+    msg: "Value is {{ undefined_var }}"
+
+# T8: Complex conditional
+- name: Complex when clause
+  debug:
+    msg: "Complex"
+  when: (ansible_os_family == "Debian" and ansible_distribution_major_version | int >= 10) or (ansible_os_family == "RedHat" and ansible_distribution_major_version | int >= 8 and not ansible_distribution == "Fedora")
+
+# SEC4: Insecure file permissions
+- name: Create secret file with bad permissions
+  copy:
+    content: "secret data"
+    dest: /etc/secrets/api_key
+    mode: 0777
+
+# R4: Missing tags
+- name: Task without tags
+  file:
+    path: /var/log/myapp
+    state: directory
+
+# MOD2: Deprecated module
+- name: Use deprecated module
+  include: other_tasks.yml
+
+# T11: Debug without verbosity
+- name: Debug sensitive info
+  debug:
+    var: all_secrets
+
+# SEC3: Unnecessary privilege escalation
+- name: Read public file as root
+  command: cat /etc/hostname
+  become: yes
+
+# T12: Using dot notation for facts
+- name: Show OS family
+  debug:
+    msg: "{{ ansible_facts.os_family }}"
