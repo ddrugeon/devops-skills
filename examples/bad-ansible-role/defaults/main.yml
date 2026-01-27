@@ -1,0 +1,24 @@
+---
+# BAD PRACTICES in defaults
+
+# R3: Bad variable naming (not prefixed with role name)
+app_port: 8080
+database_host: localhost
+
+# SEC1: Hardcoded credentials in defaults
+db_password: "default_password_123"
+api_secret_key: "my-secret-key-do-not-share"
+
+# G1: Hardcoded OS-specific values
+package_manager: apt
+service_manager: systemd
+
+# S6: Non-optional variables without comments
+required_domain_name: example.com
+
+# R3: Using dashes in variable names (bad for Jinja2)
+my-variable-with-dashes: "bad"
+
+# G5: Hardcoded version
+nginx_version: 1.18.0
+java_version: "11.0.2"

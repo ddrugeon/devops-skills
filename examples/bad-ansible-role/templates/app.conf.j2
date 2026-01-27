@@ -1,0 +1,18 @@
+# BAD: Missing ansible_managed header
+# T6: Template should start with {{ ansible_managed | comment }}
+
+[application]
+# G1: Hardcoded values in template
+host = 192.168.1.100
+port = 8080
+
+# SEC1: Hardcoded credentials in template
+database_password = SuperSecret123
+
+# G2: Missing default filter
+api_key = {{ api_key }}
+secret = {{ secret_token }}
+
+# Hardcoded paths
+log_file = /var/log/myapp/app.log
+pid_file = /var/run/myapp.pid

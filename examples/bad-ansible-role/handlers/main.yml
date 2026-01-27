@@ -1,0 +1,18 @@
+---
+# BAD PRACTICES in handlers
+
+# R5: Handler name doesn't match expected pattern
+- name: restart the nginx service
+  service:
+    name: nginx
+    state: restarted
+
+# MOD1: Missing FQCN
+- name: reload apache
+  service:
+    name: apache2
+    state: reloaded
+
+# Handler without listen directive for multiple triggers
+- name: restart app
+  command: /opt/app/restart.sh

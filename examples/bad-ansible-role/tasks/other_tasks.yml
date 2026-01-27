@@ -1,0 +1,19 @@
+---
+# More bad practices
+
+# Inconsistent naming (not prefixed)
+- name: do something
+  command: echo "test"
+
+# YAML: Wrong indentation
+- name: Bad indentation example
+  debug:
+      msg: "wrong indent"
+
+# No name at all
+- shell: whoami
+
+# Using shell with pipe without proper handling
+- name: Grep logs
+  shell: cat /var/log/syslog | grep error | wc -l
+  register: error_count
