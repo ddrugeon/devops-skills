@@ -18,7 +18,6 @@ zabbix_export:
         Compatibility: Zabbix 7.0+
       groups:
         - name: Templates/Applications
-        - name: Templates/Teralab
       items:
         # Master item + all dependent items
       tags:
