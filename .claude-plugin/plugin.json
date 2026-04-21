@@ -17,6 +17,12 @@
       "description": "Generates complete, importable Zabbix 7.0 YAML templates from Prometheus metrics endpoints.",
       "version": "0.1.0",
       "tags": ["zabbix", "observability", "monitoring"]
+    },
+    {
+      "name": "zabbix-runbook-generator",
+      "description": "Generates a complete operational runbook (Markdown) from a Zabbix 7.0 YAML template.",
+      "version": "0.1.0",
+      "tags": ["zabbix", "observability", "monitoring", "runbook", "documentation"]
     }
   ]
 }

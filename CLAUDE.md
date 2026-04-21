@@ -31,6 +31,7 @@ examples/
 |-------|---------|-------------|
 | `ansible-auditor` | 0.1.0 | Audits Ansible roles against 59 Red Hat Good Practices rules using yamllint, ansible-lint, checkov |
 | `zabbix-template-generator` | 0.1.0 | Generates Zabbix 7.0 YAML templates from Prometheus `/metrics` endpoints |
+| `zabbix-runbook-generator` | 0.1.0 | Generates a complete French operational runbook (Markdown) from a `zbx_template_*.yaml` file |
 
 ## Adding a new skill
 
