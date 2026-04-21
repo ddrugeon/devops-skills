@@ -4,5 +4,19 @@
   "version": "0.1.0",
   "author": {
     "name": "David Drugeon-Hamon"
-  }
+  },
+  "skills": [
+    {
+      "name": "ansible-auditor",
+      "description": "Comprehensive Ansible role auditor based on Red Hat Automation Good Practices.",
+      "version": "0.1.0",
+      "tags": ["ansible", "audit", "security", "best-practices", "redhat"]
+    },
+    {
+      "name": "zabbix-template-generator",
+      "description": "Generates complete, importable Zabbix 7.0 YAML templates from Prometheus metrics endpoints.",
+      "version": "0.1.0",
+      "tags": ["zabbix", "observability", "monitoring"]
+    }
+  ]
 }
