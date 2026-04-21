@@ -19,8 +19,8 @@
       "homepage": "https://github.com/ddrugeon/devops-skills",
       "repository": "https://github.com/ddrugeon/devops-skills",
       "license": "MIT",
-      "keywords": ["claude-skill", "claude-code", "devops"],
-      "tags": ["devops"]
+      "keywords": ["claude-skill", "claude-code", "devops", "ansible", "zabbix", "monitoring", "observability"],
+      "tags": ["devops", "ansible", "zabbix", "monitoring"]
     }
   ]
 }

@@ -20,6 +20,7 @@ The skills follow the open [Agent Skills](https://agentskills.io) standard, comp
 | Skill | Description | Version |
 | ----- | ----------- | ------- |
 | [ansible-auditor](skills/ansible-auditor/SKILL.md) | Comprehensive Ansible role auditor based on Red Hat Automation Good Practices. Analyzes roles across 59 rules covering security, structure, modules, tasks, genericity, reusability, and Molecule tests. | 0.1.0 |
+| [zabbix-template-generator](skills/zabbix-template-generator/SKILL.md) | Generates complete, importable Zabbix 7.0 YAML templates from Prometheus metrics endpoints. Covers counters, gauges, histograms, summaries, and production-validated preprocessing pipelines. | 0.1.0 |
 
 ## Prerequisites
 
